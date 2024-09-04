@@ -57,3 +57,9 @@ ggplot(years, aes(x = imp, y = p.api)) +
        y = "Y-axis",
        fill = "p.api") +
   theme_minimal()
+
+
+ggplot(data, aes(x = surface, y = prevalence, fill = species)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = "Surface", y = "Prevalence", fill = "Species") +
+  theme_minimal()
