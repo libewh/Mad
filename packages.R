@@ -7,3 +7,4 @@ library(ggpubr)
 library(viridis)
 library(emmeans)
 library(dplyr)
+library(fifer) #chi-square post hoc
