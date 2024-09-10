@@ -1,5 +1,47 @@
 #### graphs and plots and figures and things ####
 
+### 2019 species status ###
+dat <- data.frame(
+  "infected" = c(49,25,303),
+  "uninfected" = c(184,130,419),
+  row.names = c("bimaculatus", "griseocollis", "impatiens"),
+  stringsAsFactors = FALSE
+)
+
+dat #review 
+
+test<-fisher.test(dat) #fisher's exact
+test
+
+
+
+
+x <- c()
+for (row in rownames(dat)) {
+  for (col in colnames(dat)) {
+    x <- rbind(x, matrix(rep(c(row, col), dat[row, col]), ncol = 2, byrow = TRUE))
+  }
+}
+df <- as.data.frame(x)
+df
+colnames(df) <- c("bombus", "status")
+df
+
+# Fisher's exact test with raw data
+test <- fisher.test(table(df))
+test
+
+# combine plot and statistical test with ggbarstats
+library(ggstatsplot)
+ggbarstats(
+  df, status, bombus,
+  results.subtitle = FALSE,
+  subtitle = paste0(
+    "Fisher's exact test", ", p-value = ",
+    ifelse(test$p.value < 0.001, "< 0.001", round(test$p.value, 3))
+  )
+)
+
 ##### basic plots for data visualization ####
 ggplot(impervspecies2019) +
   aes(imperv, p.api) +
