@@ -11,7 +11,7 @@ ggbarstats(
 )
 
 ggbarstats(
-  status2019, STATUS, Species,
+  status2019, Species, STATUS,  #switching species and status groups them differently
   type = "n",
   results.subtitle = FALSE,
   title = "Prevalence of Apicystis bombi in Bombus Spp.",
