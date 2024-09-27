@@ -5,17 +5,25 @@ ggbarstats(
   species, status, bombus,
   type = "n",
   results.subtitle = FALSE,
-  
   title = "Prevalence of Apicystis bombi in Bombus Spp.",
   legend.title = "Bombus species' Status",
   legend.position = "top"
 )
 
+ggbarstats(
+  status2019, STATUS, Species,
+  type = "n",
+  results.subtitle = FALSE,
+  title = "Prevalence of Apicystis bombi in Bombus Spp.",
+  legend.title = "Bombus species' Status",
+  legend.position = "top"
+)
 
 ##### basic plots for data visualization ####
 ggplot(impervspecies2019) +
   aes(imperv, p.api) +
-  geom_tile(aes(imperv, species, fill = p.api))
+  geom_tile(aes(imperv, species, fill = p.api)) +
+  theme_classic()
 
 #plots for publication
 # Load the ggplot2 package
